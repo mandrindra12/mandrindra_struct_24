@@ -1,0 +1,25 @@
+
+
+char **split(char *string, char delim){
+	int count=0;
+	char **splited=NULL;
+
+	for(int i=0; i<strlen(string); i++){
+		if(string[i]==delim) count++;
+	}
+	splited=(char **)calloc(sizeof(char*),count);
+	for(int i=0; i<count; i++){
+		*(splited+i)=(char *)calloc(sizeof(char), 100);
+	}
+	int i=0,k=0;
+	for(int j=0; j<strlen(string); j++){
+		if(string[j]!=delim){
+			splited[i][k]=string[j];
+			k++;
+		}
+		else {
+			i++;k=0;
+		}
+	}
+	return splited;
+}
